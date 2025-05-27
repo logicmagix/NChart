@@ -26,12 +26,15 @@ Whether you're working with character encoding, debugging raw values, or just ex
   - ASCII Character (when printable)
 - Clean tabular output
 - Works as a standalone CLI script *or* editable live in IPython/XTide86
+        
 
-  Decimal      Binary       Octal       Hexadecimal     Character
-=====================================================================
-        65       1000001         101             41              A
-        66       1000010         102             42              B
-        67       1000011         103             43              C
+## Screenshots
+
+### NChart Interface
+![NChart_Logo](Screenshots/Screenshot1.png)
+
+### NChart Output
+![NChart_Output](Screenshots/Screenshot2.png)
 
 
 ## Usage
