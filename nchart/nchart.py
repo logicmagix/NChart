@@ -84,7 +84,7 @@ MIN_N = "min_n"
 MAX_N = "max_n"
 TABLE_HEADER = "table_header"
 INVISIBLE = "invisible"
-EXIT_PROMPT = "exit_prompt"
+
 
 
 resources = {
@@ -97,7 +97,6 @@ resources = {
         MAX_N: "Enter the maximum desired value for your range: ",
         TABLE_HEADER: f"{'Decimal':>10s}\t{'Binary':>10s}\t{'Octal':>10s}\t{'Hexadecimal':>15s}\t{'Character':>10s}",
         INVISIBLE: "Non-Visual",
-        EXIT_PROMPT: "Press Enter to exit...",
     },
 }
 
@@ -145,7 +144,6 @@ def main():
 
     display_chart(min_n, max_n)
     print_border()
-    input(resources[RES][EXIT_PROMPT])
 
 
 if __name__ == "__main__":
