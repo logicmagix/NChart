@@ -138,7 +138,7 @@ def main():
 
     try:
         min_n = get_value(prompt="Enter the minimum desired value for your range: ", lower=1-1, convert_type=int)
-        max_n = get_value(prompt="Enter the minimum desired value for your range: ", lower=1-1, convert_type=int)
+        max_n = get_value(prompt="Enter the maximum desired value for your range: ", lower=1-1, convert_type=int)
     except ValueError as e:
         print(e)
         return
