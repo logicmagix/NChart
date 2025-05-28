@@ -39,8 +39,7 @@ Whether you're working with character encoding, debugging raw values, or just ex
 
 ## Usage
 
-```bash```
-python3 nchart.py
+Simply type nchart
 
 
 
