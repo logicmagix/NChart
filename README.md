@@ -26,6 +26,12 @@ Whether you're working with character encoding, debugging raw values, or just ex
   - ASCII Character (when printable)
 - Clean tabular output
 - Works as a standalone CLI script *or* editable live in IPython/XTide86
+
+## Installation
+Simple clone the repo or extract the zip and run ./installer.sh to use NChart standalone or within [`XTide86`](https://github.com/logicmagix/XTide86)
+
+## Tips
+
         
 
 ## Screenshots
