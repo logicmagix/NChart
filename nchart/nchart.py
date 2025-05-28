@@ -1,11 +1,40 @@
 #!/usr/bin/env python
 
 
-# Constants
-MAX_SUPPORTED_VALUE = 6.022e23  # Max limit constant
+"""
+Prompt the user for an integer input with limited retries.
 
-# Language constant
+Parameters
+----------
+prompt : str
+    The message displayed to the user.
+attempts : int, optional
+    Number of attempts allowed before failing (default is 3).
+error_msg : str, optional
+    Message to display on invalid input (default is "Illegal argument").
+
+Returns
+-------
+int
+    The valid integer entered by the user.
+
+Raises
+------
+ValueError
+    If the maximum number of attempts is exceeded without valid input.
+"""
+
+
+from .utils.get_value import get_value
+
+
+# Constants
+MAX_SUPPORTED_VALUE = 6.022e23
+
+
+# Resource constant
 RES = "resources"
+
 
 # Helper functions
 def print_splash():
@@ -30,6 +59,7 @@ def print_border(char="=", width=80):
     """Prints a border of the given character and width."""
     print(char * width)
 
+
 def print_header(title, width=80):
     """Prints a centered header with a border, supporting multi-line titles."""
     print_border()
@@ -37,6 +67,7 @@ def print_header(title, width=80):
     for line in lines:
         print(f"{line.center(width)}")  # Center each line
     print_border()
+
 
 def print_author(title, width=80):
     """Prints author and release information"""
@@ -53,8 +84,8 @@ MIN_N = "min_n"
 MAX_N = "max_n"
 TABLE_HEADER = "table_header"
 INVISIBLE = "invisible"
-ERROR_INVALID_INPUT = "error_invalid_input"
 EXIT_PROMPT = "exit_prompt"
+
 
 resources = {
     RES: {
@@ -66,53 +97,56 @@ resources = {
         MAX_N: "Enter the maximum desired value for your range: ",
         TABLE_HEADER: f"{'Decimal':>10s}\t{'Binary':>10s}\t{'Octal':>10s}\t{'Hexadecimal':>15s}\t{'Character':>10s}",
         INVISIBLE: "Non-Visual",
-        ERROR_INVALID_INPUT: "Invalid input. Please try an integer.",
         EXIT_PROMPT: "Press Enter to exit...",
     },
 }
 
-def main():
+
+def get_valid_int(prompt, min_allowed=None, max_allowed=None):
+    while True:
+        try:
+            return get_value(prompt, int, min_value=min_allowed, max_value=max_allowed)
+        except ValueError:
+            print(errors["illegal_argument"])
+
+
+def generate_row(n):
+    """Formats a single row of the chart."""
+    binary = format(n, 'b')
+    octal = format(n, 'o')
+    hexa = format(n, 'x')
+    ascii_char = chr(n) if chr(n).isprintable() else resources[RES][INVISIBLE]
+    return f"{n:>10d}\t{binary:>10s}\t{octal:>10s}\t{hexa:>15s}\t{ascii_char:>10s}"
+
+
+def display_chart(min_n, max_n):
+    """Displays formatted output between min and max."""
+    for n in range(min_n, max_n + 1):
+        print(generate_row(n))
+
+
+def show_headers():
     print_splash()
     print_header(resources[RES][HEADER_1], width=80)
     print_header(resources[RES][HEADER_2], width=80)
     print_author(resources[RES][AUTHOR])
     print_border()
 
-    
-    # Prompt user for the range
-    while True:
-        try:
-            min_n = int(input(resources[RES][MIN_N]))
-            break  # Exit the loop if input is valid
-        except ValueError:
-            print(resources[RES][ERROR_INVALID_INPUT])  # Localized error message
-    
-    while True:
-        try:
-            max_n = int(input(resources[RES][MAX_N]))
-            break  # Exit the loop if input is valid
-        except ValueError:
-            print(resources[RES][ERROR_INVALID_INPUT])  # Localized error message
-    
-    # Clamp max_n to the supported maximum
-    max_n = min(max_n, int(MAX_SUPPORTED_VALUE))
-    
-    # Print table header with a border
-    print_border()
-    print(resources[RES][TABLE_HEADER])
-    print_border()
-    
-    # Generate and print the table
-    for n in range(min_n, max_n + 1):
-        binary = format(n, 'b')
-        octal = format(n, 'o')
-        hexa = format(n, 'x')
-        ascii_char = chr(n) if chr(n).isprintable() else resources[RES][INVISIBLE]
-        print(f"{n:>10d}\t{binary:>10s}\t{octal:>10s}\t{hexa:>15s}\t{ascii_char:>10s}")
-    
-    # End with a border
+
+def main():
+    show_headers()
+
+    try:
+        min_n = get_value(prompt="Enter the minimum desired value for your range: ", lower=1-1, convert_type=int)
+        max_n = get_value(prompt="Enter the minimum desired value for your range: ", lower=1-1, convert_type=int)
+    except ValueError as e:
+        print(e)
+        return
+
+    display_chart(min_n, max_n)
     print_border()
     input(resources[RES][EXIT_PROMPT])
+
 
 if __name__ == "__main__":
     main()

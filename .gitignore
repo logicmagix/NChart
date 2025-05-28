@@ -1,0 +1,32 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+
+# Installer artifacts
+*.sh~
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Environments
+.env
+.venv
+ENV/
+env/
+venv/
+
+# Screenshots and other temp media (if you don’t want to version control them)
+# Uncomment below if screenshots are large and change often
+# Screenshots/
+
