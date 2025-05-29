@@ -12,10 +12,10 @@ def get_value(prompt, lower=None, upper=None, convert_type=str):
                     error = f"Illegal argument: lower = {lower}. " \
                             f"Lower must be lower than {upper}."
                     print(error)
+                    return None
                 error = f"Illegal argument: value = {value}. " \
                         f"Entered value must be higher than {lower}."
                 print(error)
-                return None
             elif upper is not None and value >= upper:
                 if lower is not None and upper <= lower:
                     error = f"Illegal argument: upper = {upper}. " \
