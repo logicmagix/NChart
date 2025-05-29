@@ -1,5 +1,9 @@
 #! /usr/bin/env python3
 
+"""
+Get user input and error handling
+"""
+
 def get_value(prompt, lower=None, upper=None, convert_type=str):
     while True:
         value = input(prompt)
