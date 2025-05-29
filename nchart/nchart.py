@@ -120,6 +120,9 @@ def generate_row(n):
 
 def display_chart(min_n, max_n):
     """Displays formatted output between min and max."""
+    # Print the table header
+    print(resources[RES][TABLE_HEADER])
+    print_border()  # Optional: Add a border for better formatting
     for n in range(min_n, max_n + 1):
         print(generate_row(n))
 
