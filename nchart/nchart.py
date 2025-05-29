@@ -95,7 +95,7 @@ resources = {
         AUTHOR: "Pavle Džakula, 2025, GPLv3",
         MIN_N: "Enter the minimum desired value for your range: ",
         MAX_N: "Enter the maximum desired value for your range: ",
-        TABLE_HEADER: f"{'Decimal':>10s}\t{'Binary':>10s}\t{'Octal':>10s}\t{'Hexadecimal':>15s}\t{'Character':>10s}",
+        TABLE_HEADER: f"{'Decimal':>10s}\t{'Binary':>10s}\t{'Octal':>10s}\t{'Hexadecimal':>15s}\t     {'Character':>10s}",
         INVISIBLE: "Non-Visual",
     },
 }
@@ -115,13 +115,13 @@ def generate_row(n):
     octal = format(n, 'o')
     hexa = format(n, 'x')
     ascii_char = chr(n) if chr(n).isprintable() else resources[RES][INVISIBLE]
-    return f"{n:>10d}\t{binary:>10s}\t{octal:>10s}\t{hexa:>15s}\t{ascii_char:>10s}"
+    return f"{n:>10d}\t{binary:>10s}\t{octal:>10s}\t{hexa:>15s}\t     {ascii_char:>10s}"
 
 
 def display_chart(min_n, max_n):
     """Displays formatted output between min and max."""
     # Print the table header
-    print_border()
+    print_border()	
     print(resources[RES][TABLE_HEADER])
     print_border()
     for n in range(min_n, max_n + 1):
