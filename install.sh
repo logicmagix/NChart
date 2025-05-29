@@ -1,21 +1,33 @@
 #!/usr/bin/env bash
 
+
 INSTALL_DIR="$HOME/.local/share/nchart"
 BIN_DIR="$HOME/.local/bin"
 WRAPPER="$BIN_DIR/nchart"
 
-mkdir -p "$INSTALL_DIR"
-cp -r nchart "$INSTALL_DIR"
 
+# Ensure target directories exist
+mkdir -p "$INSTALL_DIR"
 mkdir -p "$BIN_DIR"
 
-cat << EOF > "$WRAPPER"
+
+# Copy project files into the install dir
+cp -r nchart "$INSTALL_DIR"
+
+
+# Create the wrapper script
+cat << 'EOF' > "$WRAPPER"
 #!/usr/bin/env bash
-PYTHONPATH="$INSTALL_DIR" python3 -m nchart.nchart
+PYTHONPATH="$HOME/.local/share/nchart" python3 -m nchart.nchart "$@"
 EOF
 
-chmod u+x "$WRAPPER"
 
-echo "nchart installed to $WRAPPER"
-echo "Make sure ~/.local/bin is in your PATH."
+# Make the wrapper executable
+chmod +x "$WRAPPER"
+
+
+# Notify the user
+echo "[+] nchart installed to: $WRAPPER"
+echo "[+] Make sure ~/.local/bin is in your PATH"
+
 
