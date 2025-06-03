@@ -21,7 +21,7 @@ def get_value(prompt, lower=None, upper=None, convert_type=str):
                         f"Entered value must be higher than {lower}."
                 print(error)
             elif upper is not None and value >= upper:
-                if lower is not None and upper <= lower:
+                if lower is not None and upper <=lower:
                     error = f"Illegal argument: upper = {upper}. " \
                             f"Upper must be higher than {lower}."
                     print(error)
@@ -33,7 +33,7 @@ def get_value(prompt, lower=None, upper=None, convert_type=str):
                 return value
         except ValueError:
             error = f"Illegal argument: value = {value}. " \
-                    f"Entered value must be of type: \n {convert_type.__doc__}."
+                    f"Entered value must be of type:  \n {convert_type.__doc__}."
             print(error)
 
 
