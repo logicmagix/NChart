@@ -6,14 +6,14 @@ See the [LICENSE](./LICENSE) file for full details.
 # NChart
 
 **A number system converter for your terminal.**  
-Part of the [XTide86](https://github.com/logicmagix/XTide86) ecosystem — a modular terminal IDE for command-line enthusiasts.
+Part of the [Tide42](https://github.com/logicmagix/Tide42) ecosystem — a modular terminal IDE for command-line enthusiasts.
 
 ## About NChart
 
 NChart is a terminal-based number system converter and visualization tool.
 It transforms decimal values into their binary, octal, hexadecimal, and ASCII character representations, displaying them in a clean, tabular format.
 
-Designed for programmers, educators, and curious tinkerers, NChart can be used as a quick CLI tool or loaded into an IPython buffer for interactive experimentation within the XTide86 terminal IDE.
+Designed for programmers, educators, and curious tinkerers, NChart can be used as a quick CLI tool or loaded into an IPython buffer for interactive experimentation within the Tide42 terminal IDE.
 
 Whether you're working with character encoding, debugging raw values, or just exploring number systems, NChart gives you a simple and powerful way to see the math behind the machine.
 
@@ -25,10 +25,10 @@ Whether you're working with character encoding, debugging raw values, or just ex
   - Hexadecimal
   - ASCII Character (when printable)
 - Clean tabular output
-- Works as a standalone CLI script *or* editable live in IPython/XTide86
+- Works as a standalone CLI script *or* editable live in IPython/Tide42
 
 ## Installation
-Simple clone the repo or extract the zip and run ./installer.sh to use NChart standalone or within [`XTide86`](https://github.com/logicmagix/XTide86)
+Simple clone the repo or extract the zip and run ./installer.sh to use NChart standalone or within [`Tide42`](https://github.com/logicmagix/Tide42)
 
 ## Tips
 
