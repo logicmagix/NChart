@@ -16,7 +16,7 @@ def get_value(prompt, lower=None, upper=None, convert_type=str):
                     error = f"Illegal argument: upper = {upper}. " \
                             f"Lower must be lower than {upper}."
                     print(error)
-                    return None
+                    continue
                 error = f"Illegal argument: value = {value}. " \
                         f"Entered value must be higher than {lower}."
                 print(error)
@@ -25,7 +25,7 @@ def get_value(prompt, lower=None, upper=None, convert_type=str):
                     error = f"Illegal argument: upper = {upper}. " \
                             f"Upper must be higher than {lower}.."
                     print(error)
-                    return None
+                    continue
                 error = f"Illegal argument: value = {value}. " \
                         f"Entered value must be lower than {upper}."
                 print(error)
