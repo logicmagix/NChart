@@ -1,30 +1,6 @@
 #!/usr/bin/env python
 
 
-"""
-Prompt the user for an integer input with limited retries.
-
-Parameters
-----------
-prompt : str
-    The message displayed to the user.
-attempts : int, optional
-    Number of attempts allowed before failing (default is 3).
-error_msg : str, optional
-    Message to display on invalid input (default is "Illegal argument").
-
-Returns
--------
-int
-    The valid integer entered by the user.
-
-Raises
-------
-ValueError
-    If the maximum number of attempts is exceeded without valid input.
-"""
-
-
 from .utils.get_value import get_value
 
 
@@ -138,16 +114,41 @@ def show_headers():
 
 def main():
     show_headers()
+    def read_int(label: str, low: int | None = None, high: int | None = None) -> int:
+        """Read an integer with 'q' to quit, range-check after conversion."""
+        while True:
+            raw = get_value(
+                prompt=f"{label} (or 'q' to quit): ",
+                convert_type=str
+            ).strip().lower()
 
-    try:
-        min_n = get_value(prompt="Enter the minimum desired value for your range: ", lower=1-1, convert_type=int)
-        max_n = get_value(prompt="Enter the maximum desired value for your range: ", lower=1-1, convert_type=int)
-    except ValueError as e:
-        print(e)
-        return
-
-    display_chart(min_n, max_n)
-    print_border()
+            if raw == "q":
+                print("Goodbye!")
+                raise SystemExit
+            try:
+                val = int(raw)
+            except ValueError:
+                print("Error: please enter an integer or 'q' to quit.")
+                continue
+            if low is not None and val < low:
+                print(f"Out of range: expected ≥ {low}.")
+                continue
+            if high is not None and val > high:
+                print(f"Out of range: expected ≤ {high}.")
+                continue
+            return val
+    while True:
+        min_n = read_int("Enter the minimum desired value for your range", low=0)
+        max_n = read_int("Enter the maximum desired value for your range", low=min_n)
+        display_chart(min_n, max_n)
+        print_border()
+        again = get_value(
+            prompt="Press Enter to make another chart, or 'q' to quit:\t",
+            convert_type=str
+        ).strip().lower()
+        if again == "q":
+            print("Goodbye!")
+            break
 
 
 if __name__ == "__main__":
