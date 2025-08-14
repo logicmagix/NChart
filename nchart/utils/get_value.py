@@ -38,9 +38,8 @@ def get_value(prompt, lower=None, upper=None, convert_type=str):
 
 
 def main():
-    prompt = "Enter value:\t"
-    value = get_value(prompt, convert_type=int)
-    print(f"Value = {value}.")
+    get_value()
+    
 
 
 if __name__ == "__main__":
