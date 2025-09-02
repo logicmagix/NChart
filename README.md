@@ -28,7 +28,7 @@ Whether you're working with character encoding, debugging raw values, or just ex
 - Works as a standalone CLI script *or* editable live in IPython/Tide42
 
 ## Installation
-Simple clone the repo or extract the zip and run ./installer.sh to use NChart standalone or within [`Tide42`](https://github.com/logicmagix/Tide42)
+Simple clone the repo or extract the zip, make executable and run ./install.sh to use NChart standalone or within [`Tide42`](https://github.com/logicmagix/Tide42)
 
 ## Tips
 
